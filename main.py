@@ -1,9 +1,8 @@
-from itertools import count
 import os
 import random
 import discord
 from dotenv import load_dotenv
-
+from keep_alive import keep_alive
 word_list = ["humph","delve","growl","agora","ahead","augur","hyper","homer","cramp", "whelp", "bleed","asset",
 "fella","delve","unfit","movie","alike","scare","smear","alpha","crimp","altar","hunky","labor","bleed","leave",
 "groin","ruder","spill","crate","loopy","error","liver","wench","vigor","motto","being","admit","bluff","drink",
@@ -20,7 +19,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Streaming(name='$help', url='https://github.com/bharathraj-v/'))
+    await client.change_presence(activity=discord.Streaming(name='$word help', url='https://github.com/bharathraj-v/'))
 
     for guild in client.guilds:
         if guild.name == GUILD:
@@ -39,13 +38,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$help'):
+    if message.content.startswith('$word help'):
         await message.channel.send("Type $start to start playing\nGreen Square means that the letter is in correct position.\nYellow means that the letter "+
                                     "not in the right position.\nRed means that the letter does not exist.\n\nType $about for more info")
     if message.content.startswith('$about'):
         await message.channel.send("This discord bot is inspired by Wordle, a simple game that took the internet by storm. This is a discord bot implementation "+
-                                "that I thought would be cool to play with friends. Better versions of this bot exist on the internet but this was a good project "+
-                                "to work on for fun.")
+                                "that I thought would be cool to play with friends.")
 
     if message.content.startswith('$start'):
         await message.channel.send("Start guessing a 5 letter word beginning with $guess. for example, $guess cable")
@@ -57,7 +55,7 @@ async def on_message(message):
 
     if message.content.startswith('$guess'):
         guess = message.content.split(' ')[1]
-        guess_list = list(guess)
+        guess_list = list(guess.lower())
         if len(guess)!= 5:
             await message.channel.send("Please guess a 5 letter word!")
         if len(guess)==5:
@@ -78,6 +76,6 @@ async def on_message(message):
                 await message.channel.send("Type $start to reset the word and start playing again!")
 
 
-
+keep_alive()
 
 client.run(TOKEN)
