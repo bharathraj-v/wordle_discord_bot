@@ -3,13 +3,19 @@ import random
 import discord
 from dotenv import load_dotenv
 from keep_alive import keep_alive
-word_list = ["humph","delve","growl","agora","ahead","augur","hyper","homer","cramp", "whelp", "bleed","asset",
-"fella","delve","unfit","movie","alike","scare","smear","alpha","crimp","altar","hunky","labor","bleed","leave",
-"groin","ruder","spill","crate","loopy","error","liver","wench","vigor","motto","being","admit","bluff","drink",
-"chest","group","delve","stool","offal","vouch","liver","evade","first","gripe","goose","store","crate","banal",
-"jaunt","fibre","round","spend","panel","pound","fibre","alien","biome","cheek","flock","stead","smear","pinto",
-"stomp","admit","purge","wince","elder","ultra","roomy","argue","trice","sever"]
-
+word_list = ["comet","jaunt","enema","steed","abyss","growl","fling","dozen","boozy","erode","world","gouge","click",
+"briar","great","altar","pulpy","blurt","coast","duchy","groin","fixer","group","rogue","badly","smart","pithy","gaudy","chill",
+"heron","vodka","finer","surer","radio","rouge","perch","retch","wrote","clock","tilde","store","prove",
+"bring","solve","cheat","grime","exult","usher","epoch","triad","break","rhino","viral","conic","masse","sonic","vital","trace",
+"using","peach","champ","baton","brake","pluck","craze","gripe","weary","picky","acute","ferry","aside","tapir","troll","unify",
+"rebus","boost","truss","siege","tiger","banal","slump","crank","gorge","query","drink","favor","abbey","tangy","panic","solar",
+"shire","proxy","point","robot","prick","wince","crimp","knoll","sugar","whack","mount","perky","could","wrung","light","those","moist","shard",
+"pleat","aloft","skill","elder","frame","humor","pause","ulcer","ultra","robin","cynic","agora","aroma","caulk","shake","pupal","dodge","swill",
+"tacit","other","thorn","trove","bloke","vivid","spill","chant","choke","rupee","nasty","mourn","ahead","brine","cloth","hoard","sweet","month",
+"lapse","watch","today","focus","smelt","tease","cater","movie","lynch","saute","allow","renew","their","slosh","purge","chest","depot","epoxy",
+"nymph","found","shall","harry","stove","lowly","snout","trope","fewer","shawl","natal",
+"fibre","comma","foray","scare","stair","black","squad","royal","chunk","mince","slave","shame",
+"cheek","ample","flair","foyer","cargo","oxide","plant","olive","inert"]
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -74,6 +80,10 @@ async def on_message(message):
             if result == " :green_square:"*5:
                 await message.channel.send("Congratulations. You have got the word in "+str(int(count/5))+" tries")
                 await message.channel.send("Type $start to reset the word and start playing again!")
+                global word
+                word = random.choice(word_list)
+                count = 0
+
 
 
 keep_alive()
