@@ -79,10 +79,11 @@ async def on_message(message):
             await message.channel.send(result+"     "+" Tries: "+str(int(count/5)))
             if result == " :green_square:"*5:
                 await message.channel.send("Congratulations. You have got the word in "+str(int(count/5))+" tries")
-                await message.channel.send("Type $start to reset the word and start playing again!")
-                global word
+                await message.channel.send("The word has been reset. Start guessing again!")
                 word = random.choice(word_list)
                 count = 0
+                print(word)
+
 
 
 
