@@ -10,3 +10,7 @@ $about
 $start
 $guess {word}
 
+# Screenshot
+* <img src="worlde.png" width="400" align="left"><br />
+ <br><br/>
+
