@@ -10,7 +10,7 @@ $about
 $start
 $guess {word}
 
-# Screenshot
-* <img src="wordle.png" width="400" align="left"><br />
- <br><br/>
+### Screenshot:
+<img src="wordle.png" width="400" align="left"><br />
+<br><br/>
 
